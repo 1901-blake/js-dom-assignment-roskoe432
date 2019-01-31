@@ -17,7 +17,7 @@ function getUSA() {
 		}
 	}
 }
-// getUSA();
+getUSA();
 
 
 
@@ -29,7 +29,7 @@ function getPeopleInSales() {
 	for(let i = 0; i < td.length; i++)
 		console.log(td[i].innerHTML);
 }
-// getPeopleInSales();
+getPeopleInSales();
 
 
 
@@ -43,7 +43,7 @@ function getAnchorChildren() {
 		console.log(spans[i].innerHTML);
 	}
 }
-// getAnchorChildren();
+getAnchorChildren();
 
 
 
@@ -62,7 +62,7 @@ function getHobbies() {
 		}
 	}
 }
-// getHobbies();
+getHobbies();
 
 
 
@@ -78,7 +78,7 @@ function getCustomAttributes() {
 		console.log(`Value = ${value}, ${cust[i]}`);
 	}
 }
-// getCustomAttributes();\
+getCustomAttributes();
 
 
 
@@ -245,14 +245,17 @@ let HelloWorld = (function() {
 Define function walkTheDOM(node, func)
 This function should traverse every node in the DOM. Use recursion.
 On each node, call func(node). */
-function WalkTheDom(node, func) {
-	func(node);
-	if (node.childElementCount > 0) {
-		for (let i = 0; i < node.children.length; i++) {
-			WalkTheDom(node.children[i], func);
+let WalkTheDom = (function() {
+	function WalkTheDom(node, func) {
+		func(node);
+		if (node.childElementCount > 0) {
+			for (let i = 0; i < node.children.length; i++) {
+				WalkTheDom(node.children[i], func);
+			}
 		}
 	}
-}
+	return WalkTheDom;
+})();
 WalkTheDom(document.getElementsByTagName('html')[0], (node) => {
 	console.log(node.tagName);
 });
